@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Ebiz_Prefix>
+      <version>0.1.0</version>
+    </Ebiz_Prefix>
+  </modules>
+  <global>
+    <helpers>
+      <prefix>
+        <class>Ebiz_Prefix_Helper</class>
+      </prefix>
+    </helpers>
+	<models>
+	  <prefix>
+		<class>Ebiz_Prefix_Model</class>
+		<resourceModel>prefix_mysql4</resourceModel>
+	  </prefix>
+	</models>
+    <events>
+	  <sales_order_save_after> <!-- identifier of the event we want to catch -->
+        <observers>
+          <sales_order_save_after_handler> <!-- identifier of the event handler -->
+            <type>model</type> <!-- class method call type; valid are model, object and singleton -->
+            <class>prefix/observer</class> <!-- observers class alias -->
+            <method>orderPrefix</method>  <!-- observer's method to be called -->
+            <args></args> <!-- additional arguments passed to observer -->
+          </sales_order_save_after_handler>
+        </observers>
+      </sales_order_save_after>
+    </events>
+  </global>
+</config> 
